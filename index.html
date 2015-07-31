@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Chat</title>
+		<link rel="shortcut icon" href="css/chat.ico">
+		<link rel="stylesheet" type="text/css" href="css/style.css">		
+	</head>
+	<body>
+		<div id="welcome">				
+			<form id="userInput" action="">
+				<select>
+					<option value="">Select a chat room</option>
+				  	<option value="room1">Room 1</option>
+					<option value="room2">Room 2</option>
+				  	<option value="room3">Room 3</option>
+				</select>
+				<span>Please enter your username:</span>
+				<input id="username" autocomplete="off" />
+				<button>Enter</button>
+			</form>
+		</div>			
+		<div class="main" hidden>
+			<ul id="messages"></ul>			
+		</div>
+		<div class="userList" hidden>
+			<h2>USERS IN THIS ROOM</h2>
+			<ul id="users"></ul>
+		</div>
+		<div class="compose" hidden>
+			<form id="sendMessage" action="">
+				<input id="message" autocomplete="off" /><button>Send</button>
+			</form>
+		</div>
+		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+	</body>
+</html>

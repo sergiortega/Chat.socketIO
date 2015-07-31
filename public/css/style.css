@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font: 13px Helvetica, Arial;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+form input {
+    border: 0;
+    padding: 10px;
+    width: 90%;
+    margin-right: .5%;
+    border-radius: 5px;
+}
+form input#username {
+    display: inline-block;
+    width: 100%;
+    float: left;
+    margin-top: 5px;
+}
+form button {
+    width: 9%;
+    background: #1e4d1c;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+form button:hover {
+    color: black;
+    background: #b7e6b5;
+}
+form#userInput {
+    padding: 10px;
+}
+ul#messages,
+ul#users {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul#users {
+    padding-top: 20px;
+}
+ul#messages li {
+    padding: 5px 10px;
+}
+ul#users li {
+    background-image: url('http://rpt1.dowlatow.ru/wp-content/uploads/2015/01/Bulletpoint_Bullet_Listicon_Shape_Bulletfont_Glyph_Typography_Bullet_Point_Customshape_Wingding_Custom_Tick_Accept_Check_Ok_Yes_Circle-512.png');
+    padding-left: 15px;
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+}
+ul#messages li.username {
+    font-weight: bold;
+}
+ul#messages li.text {
+    padding-left: 30px;
+}
+ul#messages li.new_user {
+    border: 2px solid #336699;
+    border-radius: 5px;
+    margin: 5px auto 5px auto;
+    width: 100%;
+    background-color: #4775a3;
+    color: white;
+}
+ul#messages li.new_user.bye {
+    border: 2px solid #993366;
+    background-color: #b20000;
+}
+div#welcome {
+    background-color: #4dc247;
+    width: 50%;
+    margin: 25% auto;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+div#welcome button {
+    width: 100%;
+    margin-top: 10px;
+}
+div#welcome span {
+    width: 100%;
+    margin-top: 10px;
+    display: inline-block;
+}
+div.main {
+    width: 80%;
+    float: left;
+    height: 90%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    word-wrap: break-word;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+div.userList {
+    width: 20%;
+    height: 90%;
+    float: left;
+    padding: 10px;
+    border: 2px solid #4dc247;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: fixed;
+}
+div.userList h2 {
+    color: green;
+}
+div.compose {
+    background: #4dc247;
+    padding: 31px 15px;
+    position: fixed;
+    float: left;
+    bottom: 0;
+    width: 100%;
+}
