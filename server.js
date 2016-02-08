@@ -25,7 +25,7 @@ io.on('connection', function (socket){
         socket.join(socket.room);
         clients.push({room: socket.room, userID: socket.id, username: socket.username});
         var clientsInRoom = clients.filter(function (el) { return el.room === socket.room; });
-    	io.to(socket.room).emit('chat message', {message: 'welcomeMsg', userID: socket.id, username: socket.username});
+    	io.to(socket.room).emit('chat message', {message: 'welcomeMsg', userID: socket.id, username: socket.username, room: socket.room});
         io.to(socket.room).emit('updateUserList', {clients: clientsInRoom});
     	console.log('userID: '+ socket.id +' - Connected to room: ' + socket.room);
     });

@@ -8,26 +8,10 @@ var scrollToBottom = function () {
     main.scrollTop(height);
 };
 
-$('form#userInput').submit(function (){
-	if ($('#username').val() !== '' && $('select').val()) {
-		socket.emit('adduser', $('#username').val(), $('select').val());
-		$('#username').val('');
-		$('#welcome').hide();
-		$('div.main').show();
-		$('div.userList').show();
-		$('div.compose').show();
-		connected = true;
-	}
-	return false;
-});
-
-$('form#sendMessage').submit(function (){
-	if ($('#message').val() !== '') {
-		socket.emit('chat message', $('#message').val());
-		$('#message').val('');
-	}
-	return false;
-});
+var clearStorage = function () {
+	localStorage.clear();
+	window.location.reload();
+}
 
 socket.on('chat message', function (data){
 	if (!connected) return false;
@@ -40,6 +24,8 @@ socket.on('chat message', function (data){
 		message = data.username + ' has join the group.';
 		$('#messages').append($('<li class="new_user">').text(message));
 		scrollToBottom();
+		localStorage.setItem("username", data.username);
+        localStorage.setItem("room", data.room);
 		return false;
 	} else if (message === 'byeMsg') { //bye message will let the users now which user jus left the chat room
 		message = data.username + ' has left the group.';
@@ -66,4 +52,43 @@ socket.on('updateUserList', function (data){
 			$('#users').append($('<li>').text(data.clients[i].username));
 		}
 	}
+});
+
+$(document).ready(function () {
+	var usernameLocal = localStorage.getItem("username"),
+		roomLocal = localStorage.getItem("room");
+
+	if (usernameLocal != null && roomLocal != null) {
+		socket.emit('adduser', usernameLocal, roomLocal);
+		$('#welcome').hide();
+		$('div.main').addClass('show');
+		$('div.userList').addClass('show');
+		$('div.compose').addClass('show');
+		connected = true;
+	}
+
+	$('div.userList').click(function () {
+		$(this).find('ul').toggle();
+	});
+
+	$('form#userInput').submit(function (){
+		if ($('#username').val() !== '' && $('select').val()) {
+			socket.emit('adduser', $('#username').val(), $('select').val());
+			$('#username').val('');
+			$('#welcome').hide();
+			$('div.main').addClass('show');
+			$('div.userList').addClass('show');
+			$('div.compose').addClass('show');
+			connected = true;
+		}
+		return false;
+	});
+
+	$('form#sendMessage').submit(function (){
+		if ($('#message').val() !== '') {
+			socket.emit('chat message', $('#message').val());
+			$('#message').val('');
+		}
+		return false;
+	});
 });

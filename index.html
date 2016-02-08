@@ -18,15 +18,17 @@
 				<input id="username" autocomplete="off" />
 				<button>Enter</button>
 			</form>
-		</div>			
-		<div class="main" hidden>
-			<ul id="messages"></ul>			
 		</div>
-		<div class="userList" hidden>
-			<h2>USERS IN THIS ROOM</h2>
+		<div class="userList">
+			<img src="css/menuIcon.png" width="30px" />
+			<h2>USERS IN THIS ROOM</h2>			
 			<ul id="users"></ul>
-		</div>
-		<div class="compose" hidden>
+			<button onclick="clearStorage()">Leave this room</button>
+		</div>			
+		<div class="main">
+			<ul id="messages"></ul>			
+		</div>		
+		<div class="compose">
 			<form id="sendMessage" action="">
 				<input id="message" autocomplete="off" /><button>Send</button>
 			</form>
